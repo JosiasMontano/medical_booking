@@ -1,3 +1,6 @@
+import React from "react";
+
+    
 const doctors = [
     { id: 1, name: "Dr. Ana Martínez", specialty: "Cardiología", image: "https://placehold.co/100x100?text=Dr.+Ana" },
     { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://placehold.co/100x100?text=Dr.+Carlos" },
@@ -79,3 +82,69 @@ const MedicalBookingApp = () => {
             setIsConfirmed(false);
         }, 50000);
     };
+    const canSubmit = selectedDoctor && selectedTime && 
+                     patientInfo.name && (patientInfo.email || patientInfo.phone);
+    
+    return (
+        <div className="booking-container">
+            <header className="app-header">
+                <h1><i className="fas fa-calendar-check"></i> Reserva de Citas Médicas</h1>
+                <p>Sistema de agendamiento en línea</p>
+            </header>
+            
+            {!isConfirmed ? (
+                <div className="main-content">
+                    <div className="doctor-list">
+                        <h2>Seleccione un médico</h2>
+                        {doctors.map(doctor => (
+                            <div 
+                                key={doctor.id}
+                                className={`doctor-card ${selectedDoctor?.id === doctor.id ? 'selected' : ''}`}
+                                onClick={() => setSelectedDoctor(doctor)}
+                            >
+                                <h3 className="doctor-name">
+                                    <img 
+                                        src={doctor.image} 
+                                        alt={`Foto del ${doctor.name}, especialista en ${doctor.specialty}`}
+                                        style={{width: '40px', borderRadius: '50%', marginRight: '10px'}} 
+                                    />
+                                    {doctor.name}
+                                </h3>
+                                <p className="doctor-specialty">{doctor.specialty}</p>
+                            </div>
+                        ))}
+                    </div>
+                    
+                    {selectedDoctor && (
+                        <div className="booking-calendar">
+                            <div className="calendar-header">
+                                <div>
+                                    <h2 className="calendar-title">
+                                        {selectedDate.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' })}
+                                    </h2>
+                                </div>
+                                <div className="calendar-nav">
+                                    <button onClick={() => changeDate(-1)}>
+                                        <i className="fas fa-chevron-left"></i>
+                                    </button>
+                                    <button onClick={() => setSelectedDate(new Date())}>
+                                        Hoy
+                                    </button>
+                                    <button onClick={() => changeDate(1)}>
+                                        <i className="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            ) : (
+                <div className="confirmation-message"></div>
+                )
+            }
+        </div>
+   );
+}
+ReactDOM.render(<MedicalBookingApp />, document.getElementById("root"));
+
+
