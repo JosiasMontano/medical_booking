@@ -2,10 +2,10 @@ import React from "react";
 
     
 const doctors = [
-    { id: 1, name: "Dr. Ana Martínez", specialty: "Cardiología", image: "https://thumbs.dreamstime.com/b/doctor-portrait-21332357.jpg" },
-    { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://cdn.pixabay.com/photo/2023/12/21/06/23/doctor-8461303_1280.jpg" },
-    { id: 3, name: "Dra. Laura Gómez", specialty: "Dermatología", image: "https://placehold.co/100x100?text=Dra.+Laura" },
-    { id: 4, name: "Dr. Javier Sánchez", specialty: "Ortopedia", image: "https://placehold.co/100x100?text=Dr.+Javier" },
+    { id: 1, name: "Dr. Ana Martínez", specialty: "Cardiología", image: "https://thumbs.dreamstime.com/z/portrait-positive-young-doctor-17425454.jpg" },
+    { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://www.adiratechserve.com/wp-content/uploads/2016/05/our_team_4.jpg" },
+    { id: 3, name: "Dra. Laura Gómez", specialty: "Dermatología", image: "https://tse4.mm.bing.net/th/id/OIP.ynLvvq5xBKo9VlrJoNZWvgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { id: 4, name: "Dr. Javier Sánchez", specialty: "Ortopedia", image: "https://tse2.mm.bing.net/th/id/OIP.eH622VPOfskqX-gnnfRrGwHaHa?r=0&w=626&h=626&rs=1&pid=ImgDetMain&o=7&rm=3" },
 ];
 
 const availableSlots = [
