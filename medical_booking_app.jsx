@@ -2,8 +2,8 @@ import React from "react";
 
     
 const doctors = [
-    { id: 1, name: "Dr. Ana Martínez", specialty: "Cardiología", image: "https://placehold.co/100x100?text=Dr.+Ana" },
-    { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://placehold.co/100x100?text=Dr.+Carlos" },
+    { id: 1, name: "Dr. Ana Martínez", specialty: "Cardiología", image: "https://thumbs.dreamstime.com/b/doctor-portrait-21332357.jpg" },
+    { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://cdn.pixabay.com/photo/2023/12/21/06/23/doctor-8461303_1280.jpg" },
     { id: 3, name: "Dra. Laura Gómez", specialty: "Dermatología", image: "https://placehold.co/100x100?text=Dra.+Laura" },
     { id: 4, name: "Dr. Javier Sánchez", specialty: "Ortopedia", image: "https://placehold.co/100x100?text=Dr.+Javier" },
 ];
