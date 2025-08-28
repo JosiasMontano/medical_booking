@@ -135,15 +135,50 @@ const MedicalBookingApp = () => {
                                     </button>
                                 </div>
                             </div>
+                            <div className="time-slots">
+                                {availableSlots.map(time => (
+                                    <button
+                                        key={time}
+                                        className={`time-slot ${
+                                            isBooked(time) ? 'booked' : 
+                                            selectedTime === time ? 'selected' : ''
+                                        }`}
+                                        onClick={() => !isBooked(time) && handleTimeSelect(time)}
+                                        disabled={isBooked(time)}
+                                    >
+                                        {time}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {selectedTime && (
+                                <form className="booking-form" onSubmit={handleSubmit}>
+                                    <h3>Datos del Paciente</h3>
+                                    
+                                    <div className="form-group">
+                                        <label>Nombre completo</label>
+                                        <input 
+                                            type="text" 
+                                            name="name"
+                                            value={patientInfo.name}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
+                                    </div>
+                                </form>
+                            )}
                         </div>
                     )}
                 </div>
             ) : (
-                <div className="confirmation-message"></div>
-                )
-            }
+                <div className="confirmation">
+                    <h2><i className="fas fa-check-circle"></i> Cita Confirmada</h2>
+                    <p>Hemos programado tu cita con {selectedDoctor.name} para el {selectedDate.toLocaleDateString()} a las {selectedTime}.</p>
+                    <p>Te enviaremos los detalles a {patientInfo.email || patientInfo.phone}.</p>
+                </div>
+            )}
         </div>
-   );
+    );
 }
 ReactDOM.render(<MedicalBookingApp />, document.getElementById("root"));
 
