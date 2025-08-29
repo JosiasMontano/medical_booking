@@ -151,9 +151,9 @@ const MedicalBookingApp = () => {
                                 ))}
                             </div>
 
-                            {selectedTime && (
+                            {selectedTime && (                    
                                 <form className="booking-form" onSubmit={handleSubmit}>
-                                    <h3>Datos del Paciente</h3>
+                                    <h3>Datos del Paciente</h3>    
                                     
                                     <div className="form-group">
                                         <label>Nombre completo</label>
@@ -165,11 +165,53 @@ const MedicalBookingApp = () => {
                                             required
                                         />
                                     </div>
-                                </form>
+                                    
+                                    <div className="form-group">
+                                        <label>Correo electrónico</label>
+                                        <input 
+                                            type="email" 
+                                            name="email"
+                                            value={patientInfo.email}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label>Teléfono</label>
+                                        <input 
+                                            type="tel" 
+                                            name="phone"
+                                            value={patientInfo.phone}
+                                            onChange={handleInputChange}
+                                        />
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label>Notas adicionales (opcional)</label>
+                                        <textarea 
+                                            name="notes"
+                                            value={patientInfo.notes}
+                                            onChange={handleInputChange}
+                                            rows="3"
+                                        ></textarea>
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <p>
+                                            <strong>Cita con:</strong> {selectedDoctor.name}<br />
+                                            <strong>Fecha:</strong> {selectedDate.toLocaleDateString()}<br />
+                                            <strong>Hora:</strong> {selectedTime}
+                                        </p>
+                                    </div>
+                                    
+                                    <button type="submit" disabled={!canSubmit}>
+                                        Confirmar Cita
+                                    </button>
+                                </form>                            
                             )}
-                        </div>
+                        </div>                                    
                     )}
-                </div>
+                </div>                                             
             ) : (
                 <div className="confirmation">
                     <h2><i className="fas fa-check-circle"></i> Cita Confirmada</h2>
@@ -179,7 +221,8 @@ const MedicalBookingApp = () => {
             )}
         </div>
     );
-}
-ReactDOM.render(<MedicalBookingApp />, document.getElementById("root"));
+};
+
+ReactDOM.render(<MedicalBookingApp />, document.getElementById('root'));
 
 
