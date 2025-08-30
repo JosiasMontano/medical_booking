@@ -1,11 +1,11 @@
-import React from "react";
-
-    
 const doctors = [
-    { id: 1, name: "Dr. Ana Martínez", specialty: "Cardiología", image: "https://thumbs.dreamstime.com/z/portrait-positive-young-doctor-17425454.jpg" },
-    { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://www.adiratechserve.com/wp-content/uploads/2016/05/our_team_4.jpg" },
+    { id: 1, name: "Dr. Ana Martínez", specialty: "Atencion General", image: "https://thumbs.dreamstime.com/z/portrait-positive-young-doctor-17425454.jpg" },
+    { id: 2, name: "Dr. Carlos Ruiz", specialty: "Pediatría", image: "https://thumbs.dreamstime.com/z/handsome-doctor-man-28542914.jpg" },
     { id: 3, name: "Dra. Laura Gómez", specialty: "Dermatología", image: "https://tse4.mm.bing.net/th/id/OIP.ynLvvq5xBKo9VlrJoNZWvgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" },
     { id: 4, name: "Dr. Javier Sánchez", specialty: "Ortopedia", image: "https://tse2.mm.bing.net/th/id/OIP.eH622VPOfskqX-gnnfRrGwHaHa?r=0&w=626&h=626&rs=1&pid=ImgDetMain&o=7&rm=3" },
+    { id: 5, name: "Dra. María López", specialty: "Cardiología", image: "https://i.pinimg.com/736x/7d/b4/d0/7db4d0d82569bbcd9704b3af0a628237.jpg" },
+    { id: 6, name: "Dr. Pedro Fernández", specialty: "Neurología", image: "https://wallpapers.com/images/hd/doctor-pictures-l5y1qs2998u7rf0x.jpg" },
+    { id: 7, name: "Dra. Sofía Ramírez", specialty: "Ginecología", image: "https://thumbs.dreamstime.com/b/medical-doctor-12077608.jpg" }
 ];
 
 const availableSlots = [
@@ -13,6 +13,7 @@ const availableSlots = [
     "12:00 PM", "02:00 PM", "03:00 PM", 
     "04:00 PM", "05:00 PM"
 ];
+
 
 const existingAppointments = [
     { doctorId: 1, date: "2023-06-20", time: "10:00 AM", patientName: "Paciente Ejemplo 1" },
@@ -31,10 +32,12 @@ const MedicalBookingApp = () => {
     });
     const [isConfirmed, setIsConfirmed] = React.useState(false);
     
+ 
     const formatDate = (date) => {
         return date.toISOString().split('T')[0];
     };
     
+
     const changeDate = (days) => {
         const newDate = new Date(selectedDate);
         newDate.setDate(newDate.getDate() + days);
@@ -46,6 +49,7 @@ const MedicalBookingApp = () => {
         setSelectedTime(time);
     };
     
+    // Manejar cambios en el formulario
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setPatientInfo({
@@ -82,6 +86,7 @@ const MedicalBookingApp = () => {
             setIsConfirmed(false);
         }, 50000);
     };
+    
     const canSubmit = selectedDoctor && selectedTime && 
                      patientInfo.name && (patientInfo.email || patientInfo.phone);
     
@@ -135,6 +140,7 @@ const MedicalBookingApp = () => {
                                     </button>
                                 </div>
                             </div>
+                            
                             <div className="time-slots">
                                 {availableSlots.map(time => (
                                     <button
@@ -150,10 +156,10 @@ const MedicalBookingApp = () => {
                                     </button>
                                 ))}
                             </div>
-
-                            {selectedTime && (                    
+                            
+                            {selectedTime && (
                                 <form className="booking-form" onSubmit={handleSubmit}>
-                                    <h3>Datos del Paciente</h3>    
+                                    <h3>Datos del Paciente</h3>
                                     
                                     <div className="form-group">
                                         <label>Nombre completo</label>
@@ -207,11 +213,11 @@ const MedicalBookingApp = () => {
                                     <button type="submit" disabled={!canSubmit}>
                                         Confirmar Cita
                                     </button>
-                                </form>                            
+                                </form>
                             )}
-                        </div>                                    
+                        </div>
                     )}
-                </div>                                             
+                </div>
             ) : (
                 <div className="confirmation">
                     <h2><i className="fas fa-check-circle"></i> Cita Confirmada</h2>
@@ -224,5 +230,3 @@ const MedicalBookingApp = () => {
 };
 
 ReactDOM.render(<MedicalBookingApp />, document.getElementById('root'));
-
-
